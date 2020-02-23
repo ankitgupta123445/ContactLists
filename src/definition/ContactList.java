@@ -15,19 +15,19 @@ public class ContactList<E> implements ContactAdt<E> {
     }
 
 
-    private void addFirst(E item) {
+    private void addFirst(Person item) {
         Node<E> temp = new Node<>(item, head);
         head = temp;
         size++;
     }
 
-    private void addAfter(Node node, E item) {
-        Node<E> newNode = new Node<>(item, node.getNext());
+    private void addAfter(Node node, Person item) {
+        Node<E> newNode = new Node<E>(item, node.getNext());
         node.next = newNode;
         size++;
     }
 
-    public void addContact(E item, int index) {
+    public void addContact(Person item, int index) {
         if (index == 0) {
             addFirst(item);
         } else {
@@ -37,7 +37,7 @@ public class ContactList<E> implements ContactAdt<E> {
     }
 
     @Override
-    public void addContact(E person) {
+    public void addContact(Person person) {
         addContact(person, size);
     }
 
@@ -58,20 +58,22 @@ public class ContactList<E> implements ContactAdt<E> {
         return null;
     }
 
-    private class Node<E> {
-        E data;
-        Node<E> next;
 
-        public Node(E data, Node<E> next) {
+    private static class Node<E> {
+
+        private Person data;
+        private Node<E> next;
+
+        private Node(Person data, Node<E> next) {
             this.data = data;
             this.next = next;
         }
 
-        public E getData() {
+        private Person getData() {
             return data;
         }
 
-        public Node<E> getNext() {
+        private Node<E> getNext() {
             return next;
         }
     }

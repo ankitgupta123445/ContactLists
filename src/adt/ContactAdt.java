@@ -1,7 +1,9 @@
 package adt;
 
+import definition.Person;
+
 public interface ContactAdt<E> {
-    void addContact(E person);
+    void addContact(Person person);
 
     void viewContact();
 
