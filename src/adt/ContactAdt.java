@@ -9,5 +9,5 @@ public interface ContactAdt<E> {
 
     boolean searchContact(E person);
 
-    E deleteContact(int index);
+    Person deleteContact(int index);
 }

@@ -14,7 +14,7 @@ public class ContactList<E> implements ContactAdt<E> {
         return response;
     }
 
-
+// add method
     private void addFirst(Person item) {
         Node<E> temp = new Node<>(item, head);
         head = temp;
@@ -35,29 +35,72 @@ public class ContactList<E> implements ContactAdt<E> {
         }
 
     }
-
     @Override
     public void addContact(Person person) {
         addContact(person, size);
     }
 
+    // get list of all contact
+    private Person viewAContact(Node<E> node) {
+        Person response = null;
+        response = node.getData();
+        return response;
+    }
 
     @Override
     public void viewContact() {
-
+        for (int i = 0; i < size; i++) {
+            Node<E> temp = this.getNode(i);
+            System.out.println(temp.getData());
+        }
     }
 
+
+    // search contact
     @Override
     public boolean searchContact(E person) {
         return false;
     }
 
 
-    @Override
-    public E deleteContact(int index) {
-        return null;
+    //delete Method
+    private Person removeFirst() {
+        Person response = null;
+
+        Node<E> temp = head;
+        if (head != null) {
+            head = head.getNext();
+            response = temp.getData();
+            size--;
+        }
+        return response;
     }
 
+    private Person removeAfter(Node<E> node) {
+        Person response = null;
+        if (node.next != null) {
+            node.next = node.getNext().getNext();
+            size--;
+            response = node.getNext().getData();
+        }
+        return response;
+    }
+
+    @Override
+    public Person deleteContact(int index) {
+        Person response = null;
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        } else if (index == 0) {
+            response = removeFirst();
+        } else {
+            response = removeAfter(getNode(index - 1));
+        }
+        return response;
+    }
+
+
+    //Node class
 
     private static class Node<E> {
 
