@@ -5,9 +5,10 @@ import definition.Person;
 public interface ContactAdt<E> {
     void addContact(Person person);
 
+
     void viewContact();
 
-    boolean searchContact(E person);
+    void searchContact(Person person);
 
     Person deleteContact(int index);
 }

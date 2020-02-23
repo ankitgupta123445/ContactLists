@@ -58,8 +58,16 @@ public class ContactList<E> implements ContactAdt<E> {
 
     // search contact
     @Override
-    public boolean searchContact(E person) {
-        return false;
+    public void searchContact(Person person) {
+
+        for (int i = 0; i < size; i++) {
+            if (person.getFirstName().equals(this.getNode(i).getData().getFirstName())) {
+                Node<E> temp = this.getNode(i);
+                System.out.println(temp.getData());
+            } else {
+                System.out.println("NO RESULTS FOUND!");
+            }
+        }
     }
 
 
