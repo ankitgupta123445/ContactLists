@@ -6,22 +6,22 @@ public class ContactList<E> implements ContactAdt<E> {
     private Node<E> head = null;
     private int size = 0;
 
-    private Node getNode(int index) {
-        Node response = head;
+    private Node<E> getNode(int index) {
+        Node<E> response = head;
         for (int i = 0; i < index; i++) {
             response = response.getNext();
         }
         return response;
     }
 
-// add method
+    // add method
     private void addFirst(Person item) {
         Node<E> temp = new Node<>(item, head);
         head = temp;
         size++;
     }
 
-    private void addAfter(Node node, Person item) {
+    private void addAfter(Node<E> node, Person item) {
         Node<E> newNode = new Node<E>(item, node.getNext());
         node.next = newNode;
         size++;
